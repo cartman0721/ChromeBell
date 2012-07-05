@@ -14,10 +14,10 @@
 		}
 		
 		function save () {
-			var timerSpan = $("timerSpan").value;
 			localStorage["kickOff"] = $("kickoff").checked;
-			localStorage["timerSpan"] = timerSpan;
-			localStorage["nextAlertTime"] = new Date().valueOf() + timerSpan * 1000 * 60;
+			localStorage["workTime"] = $("workTime").value;
+			localStorage["breakTime"] = $("breakTime").value;
+			//localStorage["nextAlertTime"] = new Date().valueOf() + timerSpan * 1000 * 60;
 			window.close();
 			//alert(localStorage["nextAlertTime"]);
 		}
@@ -25,8 +25,9 @@
 		function render() {
 			var kickOff = localStorage["kickOff"];
 			$("kickoff").checked = kickOff;
-			var timerSpan = localStorage["timerSpan"] || "";
-			$("timerSpan").value = timerSpan;
+			//var timerSpan = localStorage["timerSpan"] || "";
+			$("workTime").value = localStorage["workTime"] || "";
+			$("breakTime").value = localStorage["breakTime"] || "";
 			$("btnSave").onclick = save;
 		}
 	
@@ -37,8 +38,11 @@
 
   </head>
   <body>
-	<input id="timerSpan" type="text" />
-	minutes
+	<input id="workTime" type="text" />
+	work time
+	<br/>
+    <input id="breakTime" type="text" />
+	break time
 	<br/>
 	<input id="kickoff" type = "checkbox"/>
 	On
